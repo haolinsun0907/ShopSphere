@@ -1,1 +1,126 @@
 # ShopSphere
+
+Building an e-commerce website involves several key components and a well-thought-out design pattern to ensure scalability, maintainability, and a great user experience. Here's an overview of the design pattern for an e-commerce website using React for the frontend, Spring Boot for the backend, and PostgreSQL for the database:
+
+### Frontend (React)
+
+1. **User Interface Components**
+   - **Home Page:** Display featured products, categories, and promotions.
+   - **Product Listing:** Showcase products with filters and sorting options.
+   - **Product Detail Page:** Individual product details with images, descriptions, price, and add-to-cart option.
+   - **Shopping Cart:** List of selected products with quantities, prices, and checkout option.
+   - **Checkout Process:** Forms for shipping details, payment information, and order confirmation.
+   - **User Account Management:** User profiles, order history, and settings.
+2. **State Management**
+   - Use Redux or Context API for managing global states like user authentication, shopping cart contents, and overall application state.
+3. **Routing**
+   - Utilize React Router for navigation between different pages and components.
+4. **Responsive Design**
+   - Ensure the website is responsive and provides a good user experience on various devices.
+
+### Backend (Spring Boot)
+
+1. **RESTful API Endpoints**
+   - User authentication (login, registration, logout).
+   - Product management (create, read, update, delete).
+   - Order processing (cart management, checkout process).
+   - User profile and order history.
+2. **Business Logic**
+   - Implement business rules for product management, order processing, and user interactions.
+3. **Security**
+   - Secure endpoints, especially for sensitive operations like payments and user management.
+   - Implement JWT or OAuth for user authentication.
+4. **Integration with External Services**
+   - Payment gateway integration.
+   - Email service for order confirmations and user notifications.
+
+### Database (PostgreSQL)
+
+1. **Database Schema Design**
+   - Tables for users, products, orders, order items, categories, etc.
+   - Relationships between tables (e.g., users to orders, products to categories).
+2. **Data Access Layer**
+   - Use Spring Data JPA or Hibernate for database operations.
+   - Implement repositories for CRUD operations.
+
+### Additional Considerations
+
+1. **API Documentation**
+   - Use tools like Swagger for documenting your RESTful API.
+2. **Testing**
+   - Write unit and integration tests for both frontend and backend.
+3. **Performance Optimization**
+   - Optimize database queries, use caching where appropriate, and minimize API calls from the frontend.
+4. **Deployment**
+   - Consider containerization (e.g., Docker) for easy deployment.
+   - Deploy the frontend and backend separately, possibly using services like AWS, Heroku, or Netlify.
+5. **Scalability**
+   - Design your application with scalability in mind, considering how it can handle increased loads and data volume.
+6. **User Experience**
+   - Focus on a seamless and intuitive user experience.
+   - Implement error handling and user feedback mechanisms.
+
+This overview covers the fundamental design pattern for an e-commerce website. Each component can be further detailed and expanded based on specific requirements and features you wish to implement. Remember to adapt and iterate the design as needed during the development process.
+
+## Tables:
+
+### 1. User Table
+
+**Properties:**
+
+- UserId (Primary Key, Auto-increment)
+- Username
+- Email
+- Password (hashed)
+- Name
+- Address
+- CreatedAt
+- UpdatedAt
+
+### 2. Product Table
+
+**Properties:**
+
+- ProductId (Primary Key, Auto-increment)
+- Name
+- Description
+- Price
+- StockQuantity
+- ImageUrl
+- CreatedAt
+- UpdatedAt
+
+### 3. Order Table
+
+**Properties:**
+
+- OrderId (Primary Key, Auto-increment)
+- UserId (Foreign Key)
+- TotalPrice
+- Status (e.g., Pending, Completed, Cancelled)
+- OrderDate
+- DeliveryAddress
+
+### 4. OrderItem Table
+
+**Properties:**
+
+- OrderItemId (Primary Key, Auto-increment)
+- OrderId (Foreign Key)
+- ProductId (Foreign Key)
+- Quantity
+- Price
+
+### 5. CartItem Table
+
+- CartItemId (Primary Key, Auto-increment)
+- UserId (Foreign Key, linking to the User table)
+- ProductId (Foreign Key, linking to the Product table)
+- Quantity (Number of units of the product in the cart)
+- AddedDate (Date and time when the item was added to the cart)
+
+## Tentative Timeline:
+
+### 11.20 - 11.24:
+
+- 完成5个Table的`@Entity`，`@Bean`?, `RestController`, `@Repository`, `@Service`
