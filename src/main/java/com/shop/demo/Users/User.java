@@ -2,17 +2,20 @@ package com.shop.demo.Users;
 
 import jakarta.persistence.*;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotBlank;
+//import org.hibernate.annotations.GenericGenerator;
+//import org.hibernate.validator.constraints.Email;
+//import org.hibernate.validator.constraints.NotBlank;
 
 
-import jakarta.validation.constraints.Pattern;
+
+
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
 import java.time.OffsetDateTime;
 import java.time.ZoneId;
 
@@ -33,15 +36,15 @@ public class User {
 
     @NotBlank(message = "Email is mandatory")
     @Email(        regexp = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}",
-            flags = Pattern.Flag.CASE_INSENSITIVE,message = "please enter a valid email")
+           message = "please enter a valid email")
     private String UserEmail;
     @NotBlank(message = "password is mandatory")
     private String UserPassword;
     private String Address;
 
     //timezone is Toronto
-    private String CreateAt;
-    private String UpdateAt;
+    private String CreateAt= OffsetDateTime.now(ZoneId.of("America/Toronto")).toString();;
+    private String UpdateAt= OffsetDateTime.now(ZoneId.of("America/Toronto")).toString();;
 
 
     public User() {
