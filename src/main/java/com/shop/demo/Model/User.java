@@ -1,4 +1,4 @@
-package com.shop.demo.Users;
+package com.shop.demo.Model;
 
 import jakarta.persistence.*;
 
@@ -24,10 +24,8 @@ import java.time.ZoneId;
 
 public class User {
     @Id
-
     @GeneratedValue(generator="system-uuid")
     @GenericGenerator(name="system-uuid", strategy = "uuid")
-
     @Column(name = "user_id")
     private String UserId;
     @NotBlank(message = "user name is mandatory")
@@ -35,7 +33,7 @@ public class User {
     //validate email format
 
     @NotBlank(message = "Email is mandatory")
-    @Email(        regexp = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}",
+    @Email(  regexp = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}",
            message = "please enter a valid email")
     private String UserEmail;
     @NotBlank(message = "password is mandatory")

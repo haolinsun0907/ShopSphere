@@ -1,8 +1,11 @@
-package com.shop.demo.Users;
+package com.shop.demo.Controller;
 
+import com.shop.demo.Model.User;
+import com.shop.demo.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.*;
+
 
 import javax.validation.Valid;
 import java.util.List;
@@ -24,7 +27,7 @@ public class UserController {
         return userService.getUsers();
     }
     @PostMapping
-    public void createNewUser( @Valid @RequestBody User user){
+    public void createNewUser(@Valid @RequestBody User user){
 
         userService.createNewUser(user);
 

@@ -1,5 +1,7 @@
-package com.shop.demo.Users;
+package com.shop.demo.Service;
 
+import com.shop.demo.Model.User;
+import com.shop.demo.Repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -30,7 +32,6 @@ public class UserService {
             throw new IllegalStateException("email taken");
         }
         userRepository.save(user);
-
 
     }
 

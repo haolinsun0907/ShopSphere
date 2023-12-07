@@ -1,4 +1,4 @@
-package com.shop.demo.Product;
+package com.shop.demo.Model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
@@ -42,7 +42,7 @@ public class Product {
         this.productPrice = productPrice;
         this.productStockQuantity = productStockQuantity;
         this.productImageUrl = productImageUrl;
-        this.CreateAt =createAt ;
+        this.CreateAt =createAt;
         this.UpdateAt = updateAt;
     }
 

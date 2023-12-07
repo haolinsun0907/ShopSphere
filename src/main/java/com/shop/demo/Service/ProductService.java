@@ -1,5 +1,7 @@
-package com.shop.demo.Product;
+package com.shop.demo.Service;
 
+import com.shop.demo.Model.Product;
+import com.shop.demo.Repo.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -52,7 +54,7 @@ public class ProductService {
             product.setProductName(name);
 
         }
-        if (price>0 && !Objects.equals(product.getProductPrice(),price)){
+        if (price>=0 && !Objects.equals(product.getProductPrice(),price)){
 
             product.setProductName(name);
 
@@ -62,7 +64,7 @@ public class ProductService {
             product.setProductDescription(description);
 
         }
-        if (quantity >0 && !Objects.equals(product.getProductStockQuantity(),quantity)){
+        if (quantity >=0 && !Objects.equals(product.getProductStockQuantity(),quantity)){
 
             product.setProductStockQuantity(quantity);
 

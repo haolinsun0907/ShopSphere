@@ -1,14 +1,12 @@
-package com.shop.demo.Product;
+package com.shop.demo.Controller;
 
-import com.shop.demo.Users.User;
+import com.shop.demo.Model.Product;
+import com.shop.demo.Service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "api/v1/product")
