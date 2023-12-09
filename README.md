@@ -124,6 +124,10 @@ This overview covers the fundamental design pattern for an e-commerce website. E
 ### 11.20 - 11.24:
 
 - 完成5个Table的`@Entity`，`@Bean`?, `RestController`, `@Repository`, `@Service`
+### 12.10 - 12.16:
+- finish login and signup auth
 
 ## reference:
-https://www.youtube.com/watch?v=KxqlJblhzfI
+auth:
+   https://www.youtube.com/watch?v=KxqlJblhzfI
+   https://github.com/ali-bouali/spring-boot-3-jwt-security/tree/main
