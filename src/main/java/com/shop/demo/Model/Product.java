@@ -1,10 +1,10 @@
 package com.shop.demo.Model;
 
+
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.*;
 import org.hibernate.annotations.GenericGenerator;
+
 
 
 import java.time.OffsetDateTime;

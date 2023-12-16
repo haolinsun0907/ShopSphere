@@ -2,10 +2,11 @@ package com.shop.demo.Controller;
 
 import com.shop.demo.Model.Product;
 import com.shop.demo.Service.ProductService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+
 import java.util.List;
 
 @RestController

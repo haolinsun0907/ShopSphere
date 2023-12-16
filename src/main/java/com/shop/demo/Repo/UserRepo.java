@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends JpaRepository<User,String> {
-    @Query("select s from User s where s.UserEmail =?1")
+public interface UserRepo extends JpaRepository<User,String> {
+
     Optional<User> findUserByUserEmail(String email);
     Optional<User> findUserByUserName(String userName);
 }
