@@ -118,6 +118,7 @@ This overview covers the fundamental design pattern for an e-commerce website. E
 - ProductId (Foreign Key, linking to the Product table)
 - Quantity (Number of units of the product in the cart)
 - AddedDate (Date and time when the item was added to the cart)
+- TotalPrice
 
 ## Tentative Timeline:
 
