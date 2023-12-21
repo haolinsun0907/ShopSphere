@@ -1,7 +1,7 @@
 package com.shop.demo.Service;
 
 import com.shop.demo.Model.Product;
-import com.shop.demo.Repo.ProductRepository;
+import com.shop.demo.Repo.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -14,9 +14,9 @@ import java.util.Optional;
 @Component
 @Service
 public class ProductService {
-    private final ProductRepository productRepository;
+    private final ProductRepo productRepository;
     @Autowired
-    public ProductService(ProductRepository productRepository) {
+    public ProductService(ProductRepo productRepository) {
         this.productRepository = productRepository;
     }
 
