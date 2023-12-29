@@ -18,6 +18,7 @@ import static com.shop.demo.Model.Role.Permission.MANAGER_READ;
 import static com.shop.demo.Model.Role.Permission.MANAGER_UPDATE;
 
 
+@Getter
 @RequiredArgsConstructor
 public enum Role {
 
@@ -44,7 +45,6 @@ public enum Role {
     );
 
 
-    @Getter
     private final Set<Permission> permissions;
     public List<SimpleGrantedAuthority> getAuthorities(){
         var authorities = new java.util.ArrayList<>(getPermissions()

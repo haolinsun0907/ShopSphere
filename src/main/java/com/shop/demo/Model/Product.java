@@ -3,6 +3,7 @@ package com.shop.demo.Model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
+import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 
@@ -18,16 +19,21 @@ public class Product {
     @GenericGenerator(name="system-uuid", strategy = "uuid")
     @Column(name = "product_id")
     private String productId;
+    @Setter
     @NotBlank
     private String productName;
+    @Setter
     @NotBlank
     private String productDescription;
 
+    @Setter
     @Min(value = 0, message = "price must be greater than 0")
     private double productPrice;
 
+    @Setter
     @Min(value = 0, message = "quantity must be greater than 0")
     private double productStockQuantity;
+    @Setter
     @NotBlank
     private String productImageUrl;
 
@@ -62,40 +68,20 @@ public class Product {
         return productName;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
     public String getProductDescription() {
         return productDescription;
-    }
-
-    public void setProductDescription(String productDescription) {
-        this.productDescription = productDescription;
     }
 
     public double getProductPrice() {
         return productPrice;
     }
 
-    public void setProductPrice(double productPrice) {
-        this.productPrice = productPrice;
-    }
-
     public double getProductStockQuantity() {
         return productStockQuantity;
     }
 
-    public void setProductStockQuantity(double productStockQuantity) {
-        this.productStockQuantity = productStockQuantity;
-    }
-
     public String getProductImageUrl() {
         return productImageUrl;
-    }
-
-    public void setProductImageUrl(String productImageUrl) {
-        this.productImageUrl = productImageUrl;
     }
 
     public String getCreateAt() {

@@ -12,6 +12,7 @@ import com.shop.demo.Repo.TokenRepository;
 import com.shop.demo.Repo.UserRepo;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.ConstraintViolationException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
@@ -22,6 +23,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -34,22 +37,37 @@ public class AuthenticationService {
     private final AuthenticationManager authenticationManager;
 
     public AuthenticationResponse register(RegisterRequest request) {
-        var user = User.builder()
-                .userName(request.getName())
-                .userEmail(request.getEmail())
-                .address(request.getAddress())
-                .userPassword(passwordEncoder.encode(request.getPassword()))
-                .role(request.getRole())
-                .build();
-        log.info("user is created {}", request.getEmail());
-        var savedUser = userRepo.save(user);
-        var jwtToken = jwtService.generateToken(user);
-        var refreshToken = jwtService.generateRefreshToken(user);
-        saveUserToken(savedUser, jwtToken);
-        return AuthenticationResponse.builder()
-                .accessToken(jwtToken)
-                .refreshToken(refreshToken)
-                .build();
+        Optional<User> optionalUser = userRepo.findUserByUserEmail(request.getEmail());
+        if (optionalUser.isPresent()){
+            log.error("User was register in the database");
+            throw new IllegalStateException("user was register and email was taken");
+        }else{
+                var user = User.builder()
+                        .userName(request.getName())
+                        .userEmail(request.getEmail())
+                        .address(request.getAddress())
+                        .userPassword(passwordEncoder.encode(request.getPassword()))
+                        .role(request.getRole())
+                        .build();
+                user.setUpdateAt();
+                user.setCreateAt();
+                log.info("user is created {}", request.getEmail());
+                log.info("user's Authority{}", Arrays.toString(user.getAuthorities().toArray()));
+
+                var savedUser = userRepo.save(user);
+                var jwtToken = jwtService.generateToken(user);
+                var refreshToken = jwtService.generateRefreshToken(user);
+                saveUserToken(savedUser, jwtToken);
+                return AuthenticationResponse.builder()
+                        .accessToken(jwtToken)
+                        .refreshToken(refreshToken)
+                        .build();
+
+
+
+
+        }
+
 
     }
 

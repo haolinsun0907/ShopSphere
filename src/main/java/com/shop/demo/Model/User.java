@@ -42,8 +42,8 @@ public class User implements UserDetails {
 
     @Getter
     @NotBlank(message = "Email is mandatory")
-    @Email(  regexp = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}",
-           message = "please enter a valid email")
+    @Email(message = "please enter a valid email")
+//    regexp = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}",
     private String userEmail;
     @Getter
     @NotBlank(message = "password is mandatory")
@@ -77,7 +77,7 @@ public class User implements UserDetails {
     public void setUpdateAt() {
         this.UpdateAt=OffsetDateTime.now(ZoneId.of("America/Toronto")).toString();
     }
-
+    public void setCreateAt(){this.CreateAt=OffsetDateTime.now(ZoneId.of("America/Toronto")).toString();}
 
     @Override
     public String toString() {
